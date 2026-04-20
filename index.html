@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="30-second AI tools that save Americans $100+/month. Real demos. No fluff. Educational content only.">
+  <meta name="author" content="AI Budget Hacks USA">
+  <meta name="theme-color" content="#FFD700">
+  <title>AI Budget Hacks USA | Save $100+/Month with AI</title>
+  <style>
+    :root {
+      --primary: #000000;
+      --secondary: #FFFFFF;
+      --accent: #FFD700;
+      --accent-dark: #E6C200;
+      --gray: #F5F5F5;
+      --text: #1A1A1A;
+      --text-light: #4A4A4A;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--secondary);
+      font-size: 16px;
+    }
+    .container { width: 94%; max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+    a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    .site-header {
+      background: var(--primary);
+      color: var(--secondary);
+      padding: 2rem 1rem 1.5rem;
+      text-align: center;
+      border-bottom: 4px solid var(--accent);
+    }
+    .site-header h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.5px;
+    }
+    .username { color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
+    .tagline { font-size: clamp(1rem, 2.5vw, 1.15rem); max-width: 600px; margin: 0 auto; opacity: 0.95; }
+    .location { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.8; }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: var(--accent);
+      color: var(--primary);
+      text-align: center;
+      padding: 0.8rem 1rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .cta-banner a { color: var(--primary); text-decoration: none; border-bottom: 2px solid var(--primary); }
+
+    /* Nav */
+    .sticky-nav {
+      position: sticky; top: 0; background: var(--secondary);
+      box-shadow: var(--shadow); z-index: 100; padding: 0.5rem 0;
+    }
+    .nav-scroll { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.2rem 0; scrollbar-width: none; }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+    .nav-btn {
+      flex: 0 0 auto; padding: 0.45rem 0.9rem; border-radius: 20px;
+      background: var(--gray); border: 2px solid transparent;
+      font-weight: 600; font-size: 0.9rem; transition: 0.2s;
+    }
+    .nav-btn:hover, .nav-btn:focus { background: var(--accent); border-color: var(--primary); text-decoration: none; }
+
+    /* Hero Stats */
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem; padding: 1.5rem 0; text-align: center;
+    }
+    .stat-card {
+      background: var(--gray); padding: 1rem; border-radius: var(--radius);
+      border-left: 4px solid var(--accent);
+    }
+    .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--primary); display: block; }
+    .stat-label { font-size: 0.9rem; color: var(--text-light); }
+
+    /* Sections */
+    .section { padding: 2rem 0; }
+    .section:nth-child(even) { background: var(--gray); }
+    .section h2 {
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      text-align: center; margin-bottom: 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+
+    /* Content Cards */
+    .content-card {
+      background: var(--secondary); border-radius: var(--radius);
+      padding: 1.2rem; box-shadow: var(--shadow);
+      border-top: 4px solid var(--accent);
+      transition: transform 0.2s;
+    }
+    .content-card:hover { transform: translateY(-3px); }
+    .card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.4rem; }
+    .content-card h3 { font-size: 1.1rem; margin: 0; color: var(--primary); }
+    .time-badge {
+      background: var(--primary); color: var(--secondary);
+      padding: 0.2rem 0.6rem; border-radius: 12px;
+      font-size: 0.8rem; font-weight: 700;
+    }
+    .savings { color: #2E7D32; font-weight: 700; font-size: 1.1rem; margin: 0.4rem 0; }
+    .steps { font-size: 0.9rem; color: var(--text-light); margin: 0.6rem 0; }
+    .steps ol { padding-left: 1.3rem; }
+    .steps li { margin-bottom: 0.3rem; }
+    .tool-tag {
+      display: inline-block; background: var(--gray);
+      padding: 0.2rem 0.5rem; border-radius: 6px;
+      font-size: 0.8rem; font-weight: 600; margin-top: 0.5rem;
+    }
+
+    /* Tool Library */
+    .tool-card {
+      background: var(--secondary); padding: 1rem;
+      border-radius: var(--radius); border-left: 4px solid var(--primary);
+    }
+    .tool-card h4 { color: var(--primary); margin-bottom: 0.4rem; }
+    .tool-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem; }
+    .price { color: #2E7D32; font-weight: 700; font-size: 0.95rem; }
+
+    /* Disclaimer */
+    .disclaimer-box {
+      background: #FFF9C4; border-left: 4px solid var(--accent);
+      padding: 1rem; border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.5rem 0; font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--primary); color: var(--secondary);
+      text-align: center; padding: 2rem 1rem;
+    }
+    .disclaimer { max-width: 700px; margin: 0 auto 1rem; font-size: 0.85rem; opacity: 0.9; line-height: 1.5; }
+    .copyright { font-size: 0.8rem; opacity: 0.7; }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+      .content-card { padding: 1rem; }
+      .nav-btn { font-size: 0.85rem; padding: 0.4rem 0.7rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .content-card { transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <span class="username">@AIBudgetHacksUSA</span>
+    <h1>🤖 AI Budget Hacks USA</h1>
+    <p class="tagline">30-sec AI tools that save Americans $100+/month. No fluff. Real demos. Screen-recorded in the US.</p>
+    <p class="location">📍 New York, NY • Educational Content Only</p>
+  </div>
+</header>
+
+<div class="cta-banner">
+  🔔 Follow for daily AI money-saving hacks → <a href="#">@AIBudgetHacksUSA</a>
+</div>
+
+<nav class="sticky-nav" aria-label="Categories">
+  <div class="container">
+    <div class="nav-scroll">
+      <a href="#subscriptions" class="nav-btn">🔄 Cancel Subs</a>
+      <a href="#bills" class="nav-btn">💡 Cut Bills</a>
+      <a href="#refunds" class="nav-btn">💰 Find Refunds</a>
+      <a href="#cashback" class="nav-btn">🎁 Cashback</a>
+      <a href="#tools" class="nav-btn">🧰 Tool Library</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- Hero Stats -->
+  <section class="hero-stats">
+    <div class="stat-card"><span class="stat-number">$100+</span><span class="stat-label">Avg. Monthly Savings</span></div>
+    <div class="stat-card"><span class="stat-number">30 sec</span><span class="stat-label">Per Demo</span></div>
+    <div class="stat-card"><span class="stat-number">100%</span><span class="stat-label">US-Tested Tools</span></div>
+    <div class="stat-card"><span class="stat-number">0</span><span class="stat-label">Affiliate Links</span></div>
+  </section>
+
+  <!-- Cancel Subscriptions -->
+  <section class="section" id="subscriptions">
+    <h2>🔄 Cancel Subscriptions in 30 Sec</h2>
+    <div class="grid">
+      <article class="content-card">
+        <div class="card-header"><h3>1. Rocket Money: Find Forgotten Subs</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $15-45/mo</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Connect bank (read-only)</li><li>AI scans recurring charges</li><li>Tap "Cancel" on unused subs</li><li>Robot handles the call/email</li></ol></div>
+        <span class="tool-tag">🔗 Rocket Money (Free tier)</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>2. Truebill: Negotiate Cable Bill</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $20-60/mo</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Upload latest cable bill</li><li>AI drafts negotiation script</li><li>Copy/paste to chat support</li><li>Save screenshot of new rate</li></ol></div>
+        <span class="tool-tag">🔗 Truebill / Rocket Money</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>3. Trim: Cancel Gym Membership</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $30-50/mo</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Text "CANCEL GYM" to Trim</li><li>AI verifies account details</li><li>Generates certified letter template</li><li>Mail via USPS Click-N-Ship</li></ol></div>
+        <span class="tool-tag">🔗 Trim (Free)</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>4. DoNotPay: Stop Free Trials</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $10-30/mo</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Screenshot trial confirmation email</li><li>Upload to DoNotPay "Free Trial" bot</li><li>AI generates cancellation email</li><li>Send 24h before charge date</li></ol></div>
+        <span class="tool-tag">🔗 DoNotPay</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>5. Privacy.com: Virtual Cards for Trials</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: Prevents $15-100 unwanted charges</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Create burner card in Privacy.com</li><li>Set spend limit = $1</li><li>Use for free trial signup</li><li>Card auto-declines post-trial charges</li></ol></div>
+        <span class="tool-tag">🔗 Privacy.com (Free)</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>6. AI Email: "Polite Cancel" Script</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: Time + avoids retention traps</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"Write a polite, firm email to cancel [Service]. Include account email, request confirmation, no upsell acceptance."</em><br>→ Paste to Gmail, send.</div>
+        <span class="tool-tag">🔗 ChatGPT / Claude (Free)</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- Cut Bills -->
+  <section class="section" id="bills">
+    <h2>💡 Cut Monthly Bills with AI</h2>
+    <div class="grid">
+      <article class="content-card">
+        <div class="card-header"><h3>7. Lower.com: AI Bill Negotiator</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $18-45/mo on internet/phone</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Upload bill PDF to Lower</li><li>AI analyzes competitor rates in your ZIP</li><li>Generates script for provider call</li><li>Use script + mention "I'm switching"</li></ol></div>
+        <span class="tool-tag">🔗 Lower.com</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>8. Billshark: Utility Bill Audit</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $12-35/mo</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Forward electric/gas bill to Billshark</li><li>AI flags errors, peak-rate usage</li><li>Get optimized payment plan</li><li>Apply changes via provider portal</li></ol></div>
+        <span class="tool-tag">🔗 Billshark</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>9. AI Prompt: "Compare My Plan"</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $10-40/mo</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"I pay $X/mo for [Service] in [ZIP]. List 3 cheaper US alternatives with same features. Include promo codes."</em><br>→ Verify links, switch.</div>
+        <span class="tool-tag">🔗 Perplexity AI (Free)</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>10. Trim: Internet Speed Test + Negotiate</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $15-30/mo</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Run speed test (fast.com)</li><li>If below plan speed, screenshot</li><li>Send to ISP chat: "I'm not getting advertised speeds"</li><li>Request credit or plan downgrade</li></ol></div>
+        <span class="tool-tag">🔗 Trim + Fast.com</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>11. AI: "Bundle Killer" Script</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $20-50/mo</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"I have [Service A] + [Service B]. Find US bundles or family plans that cover both for less."</em><br>→ Compare, switch, cancel duplicates.</div>
+        <span class="tool-tag">🔗 Claude / ChatGPT</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>12. Trim: Medical Bill Review</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $50-300+ (one-time)</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Upload EOB (Explanation of Benefits)</li><li>AI flags duplicate charges, out-of-network errors</li><li>Generates dispute letter template</li><li>Send to provider + insurance</li></ol></div>
+        <span class="tool-tag">🔗 Trim Health / DoNotPay</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- Find Refunds -->
+  <section class="section" id="refunds">
+    <h2>💰 Find Hidden Refunds with AI</h2>
+    <div class="grid">
+      <article class="content-card">
+        <div class="card-header"><h3>13. Paribus: Price Drop Alerts</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Recovers: $5-50 per purchase</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Connect email (Gmail/Outlook)</li><li>AI scans Amazon, Walmart, Target receipts</li><li>Alerts when price drops post-purchase</li><li>Auto-files price protection claim</li></ol></div>
+        <span class="tool-tag">🔗 Paribus (Capital One)</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>14. AI Prompt: "Refund Eligibility Checker"</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Recovers: $10-100+</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"I bought [item] from [store] on [date]. It broke/is late. What's my refund right under US consumer law? Draft a polite claim email."</em></div>
+        <span class="tool-tag">🔗 ChatGPT / Claude</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>15. DoNotPay: Flight Delay Compensation</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Recovers: $100-600 (DOT rules)</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Enter flight # + delay reason</li><li>AI checks DOT/airline policy</li><li>Generates compensation claim</li><li>Submits to airline portal</li></ol></div>
+        <span class="tool-tag">🔗 DoNotPay</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>16. AI: "Bank Fee Waiver" Script</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Recovers: $10-35 per fee</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"Draft a chat script to waive a $35 overdraft fee at [Bank]. I've been a customer X years, first offense."</em><br>→ Paste to bank chat.</div>
+        <span class="tool-tag">🔗 Any AI + Bank App</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>17. Trim: Subscription Refund Finder</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Recovers: $10-50 for unused time</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Connect account to Trim</li><li>AI identifies cancellable subs with prepaid time</li><li>Generates "prorated refund" request</li><li>Send to provider</li></ol></div>
+        <span class="tool-tag">🔗 Trim</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>18. AI: "Class Action Lookup"</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Recovers: $5-200+ (settlements)</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"List active US class action settlements I can claim for [product/service]. Include claim deadline and link."</em><br>→ Verify on TopClassActions.com</div>
+        <span class="tool-tag">🔗 Perplexity + TopClassActions</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- Cashback & Rewards -->
+  <section class="section" id="cashback">
+    <h2>🎁 AI-Powered Cashback & Rewards</h2>
+    <div class="grid">
+      <article class="content-card">
+        <div class="card-header"><h3>19. Rakuten + AI: "Best Cashback Finder"</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Earns: 2-15% back</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"I'm buying [item] at [store]. Is there a higher cashback portal, promo code, or credit card bonus I should use?"</em><br>→ Stack offers.</div>
+        <span class="tool-tag">🔗 Rakuten + AI</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>20. Capital One Shopping: Price History AI</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: 10-40% vs. buying high</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Install browser extension</li><li>Visit Amazon/Walmart product page</li><li>AI shows price history graph</li><li>Wait for dip or apply coupon code</li></ol></div>
+        <span class="tool-tag">🔗 Capital One Shopping (Free)</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>21. AI: "Credit Card Optimizer"</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Earns: $50-200/yr in points</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"I spend $X/mo on [categories]. Which US credit card gives max rewards with no annual fee? Include sign-up bonus."</em></div>
+        <span class="tool-tag">🔗 NerdWallet + AI</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>22. Drop: AI Receipt Scanner</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Earns: $1-10/mo passive</div>
+        <div class="steps"><strong>Steps:</strong><ol><li>Link grocery/retail email</li><li>AI scans receipts for eligible brands</li><li>Auto-awards points</li><li>Redeem for gift cards</li></ol></div>
+        <span class="tool-tag">🔗 Drop App</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>23. Honey + AI: "Stacking Strategy"</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: Extra 5-20%</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"What's the optimal order to apply: store coupon, portal cashback, credit card rewards, and Honey code for [store]?"</em></div>
+        <span class="tool-tag">🔗 Honey + AI</span>
+      </article>
+
+      <article class="content-card">
+        <div class="card-header"><h3>24. AI: "Gas Price Predictor"</h3><span class="time-badge">⏱️ 30s</span></div>
+        <div class="savings">💰 Saves: $0.10-0.30/gal</div>
+        <div class="steps"><strong>Prompt:</strong><br><em>"Based on AAA data, when is gas cheapest in [ZIP] this week? Suggest optimal fill-up day."</em><br>→ Use GasBuddy to verify.</div>
+        <span class="tool-tag">🔗 AAA Data + AI</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- Tool Library -->
+  <section class="section" id="tools">
+    <h2>🧰 US-Tested AI Tool Library</h2>
+    <div class="grid">
+      <div class="tool-card">
+        <h4>🔄 Rocket Money</h4>
+        <p>Cancels subs, negotiates bills, tracks spending. Free tier available.</p>
+        <p class="price">💰 Saves avg. $720/yr</p>
+      </div>
+      <div class="tool-card">
+        <h4>🤖 DoNotPay</h4>
+        <p>AI lawyer bot: refunds, trials, flight delays, small claims.</p>
+        <p class="price">💰 $36/yr or pay-per-win</p>
+      </div>
+      <div class="tool-card">
+        <h4>🔒 Privacy.com</h4>
+        <p>Virtual cards for trials, spend limits, merchant locks.</p>
+        <p class="price">💰 Free for 12 cards/mo</p>
+      </div>
+      <div class="tool-card">
+        <h4>🛒 Capital One Shopping</h4>
+        <p>Price history, coupon finder, rewards. No Capital One account needed.</p>
+        <p class="price">💰 100% free</p>
+      </div>
+      <div class="tool-card">
+        <h4>📧 Paribus (Capital One)</h4>
+        <p>Auto price-drop refunds from major US retailers.</p>
+        <p class="price">💰 Free (they take 25% of recovered $)</p>
+      </div>
+      <div class="tool-card">
+        <h4>💬 Trim</h4>
+        <p>Bill negotiation, subscription audit, medical bill review.</p>
+        <p class="price">💰 Free basic / 25% of savings</p>
+      </div>
+    </div>
+
+    <div class="disclaimer-box">
+      <strong>⚠️ Important:</strong> All tools shown are independently tested in the US. We do not accept payment for features. 
+      Results vary by location, account status, and provider policies. 
+      <strong>This is educational content only, not financial, legal, or tax advice.</strong> Consult a professional for personal guidance.
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="disclaimer">
+      AI Budget Hacks USA provides educational demonstrations of AI-powered budgeting tools. 
+      We are not financial advisors, lawyers, or affiliated with any tool mentioned. 
+      Screen recordings are performed in the United States with real accounts (demo data where required). 
+      Always review terms of service before connecting financial accounts. 
+      Past savings do not guarantee future results.
+    </p>
+    <p style="margin: 0.8rem 0; font-weight: 600;">📍 New York, NY • @AIBudgetHacksUSA</p>
+    <p class="copyright">© 2026 AI Budget Hacks USA. All rights reserved. | White • Black • Yellow</p>
+  </div>
+</footer>
+
+</body>
+</html>
